@@ -10,7 +10,7 @@ app.use(express.json());
 connectDB();
 
 //Vamos a definir nuestro conjunto de rutas
-app.use('/users', userRoutes)
+app.use('/peoples', userRoutes)
 
 app.listen(8080, () => {
     console.log('Servidor escuchando en el puerto 8080');
