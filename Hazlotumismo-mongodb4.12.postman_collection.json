@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "66e253a1-b4b4-43be-8daa-f2de06cb3a22",
+		"name": "Hazlotumismo-mongodb4.12",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38340876"
+	},
+	"item": [
+		{
+			"name": "Crear personas",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Angelica\",\n    \"last_name\": \"Tierra\",\n    \"city\": \"Quito\",\n    \"country\": \"Ecuador\",\n    \"salary\": 950\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/peoples",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar personas",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar persona por id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples/67de0e76b616200e534ad19c",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"67de0e76b616200e534ad19c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar persona por id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"salary\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/peoples/67de0e76b616200e534ad19c",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"67de0e76b616200e534ad19c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar persona por id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples/67de006cf13d8b8b2c96f36c",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"67de006cf13d8b8b2c96f36c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta todas las personas con salary 1500",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples/by-filters?salary=2500",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"by-filters"
+					],
+					"query": [
+						{
+							"key": "salary",
+							"value": "2500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta todas las personas con first_name Ivonne",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples/by-filters?first_name=Ivonne",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"by-filters"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": "Ivonne"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todas las personas con salario mayor a 1000",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples/by-filters?salary[gt]=1000",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"by-filters"
+					],
+					"query": [
+						{
+							"key": "salary[gt]",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todas las personas con salario menor a 1000",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples/by-filters?salary[lt]=1000",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"by-filters"
+					],
+					"query": [
+						{
+							"key": "salary[lt]",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todas las personas con salario entre 1000 y 2000",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples/by-filters?salary[gte]=1000&salary[lte]=2000",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"by-filters"
+					],
+					"query": [
+						{
+							"key": "salary[gte]",
+							"value": "1000"
+						},
+						{
+							"key": "salary[lte]",
+							"value": "2000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todas las personas ordenadas de acuerdo al salario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/peoples/by-filters?sort=salary",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"peoples",
+						"by-filters"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "salary"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
