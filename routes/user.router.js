@@ -76,6 +76,35 @@ router.get('/by-filters', async (req, res) =>{
     }
 });
 
+router.get('/statistics', async (req, res) => {
+    const statistics = await User.aggregate([
+        //Primer paso match, aplicar el filtro de precio
+        //El resultado del paso actual es el input del siguiente paso
+        {
+            $match: { salary: { $gte: 950 }}
+        },
+        //Segundo paso vamos a procesar los productos para agruparlos por categoria
+        {
+            //Vamos a generar un nuevo documento
+            $group: {
+                //De este documento el identificador va a ser la categoria
+                _id: null, //ropa, tecnologia, comida, muebles
+                totalProducts: { $sum: 1 },
+                //Vamos a calcular el precio promedio de los productos por categoria
+                averagePrice: { $avg: '$salary' },
+                maxPrice: { $max: '$salary' },
+                minPrice: { $min: '$salary' } 
+            },
+        },
+        //El ultimo paso vamos aplicar un ordenamiento de acuerdo al precio promedio avgPrice
+        {
+            $sort: { averagePrice: 1 },
+        }
+    ]);
+    console.log(statistics);
+    res.send(statistics);
+});
+
 //Crear un servicio para listar todos los usuarios
 router.get('/', async (req, res) => {
     try {
